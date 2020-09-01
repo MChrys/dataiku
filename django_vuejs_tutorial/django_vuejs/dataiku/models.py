@@ -32,7 +32,7 @@ class Operation(models.Model):
         ('done', 'done')
     )
     task = models.OneToOneField(Task, null=True, blank=True,on_delete=models.SET_NULL)
-    account = models.ForeignKey(Dataiku_account,  on_delete=models.CASCADE)
+    account = models.ForeignKey(Dataiku_account,null=True, blank=True,  on_delete=models.CASCADE)
 
     statut = models.CharField(max_length=255, null=True, blank=True, choices = STATUS)
 
@@ -40,7 +40,7 @@ class Operation(models.Model):
         if not self.id:
             self.creation = timezone.now()
 
-        return super(User, self).save(*args, **kwargs)
+        return super(Operation, self).save(*args, **kwargs)
 
 
 
@@ -62,7 +62,7 @@ class Session(models.Model):
         ('running','running'),
         ('finish','finish')
     )
-    email = models.ForeignKey(Dataiku_account , on_delete=models.CASCADE)
+    email = models.ForeignKey(Dataiku_account ,null=True, blank=True, on_delete=models.CASCADE)
     start = models.DateTimeField(editable =False)
     countdown =  models.CharField(max_length=10, blank=True, null=True, default= '59:59')
     score = models.IntegerField(default=0)
@@ -73,7 +73,7 @@ class Session(models.Model):
         ''' On save, update timestamps '''
         if not self.id:
             self.start = timezone.now()
-        return super(User, self).save(*args, **kwargs)
+        return super(Session, self).save(*args, **kwargs)
 
 
 # Create your models here.
@@ -110,8 +110,8 @@ class Run(models.Model):
     )
     id = models.AutoField(primary_key=True)
     #creation = models.DateTimeField(editable =False)
-    question_link = models.ForeignKey(Question,null=False,  on_delete=models.CASCADE)
-    session_link = models.ForeignKey(Session,null=True , on_delete=models.CASCADE)
+    question_link = models.ForeignKey(Question,null=True, blank=True,  on_delete=models.CASCADE)
+    session_link = models.ForeignKey(Session,null=True, blank=True , on_delete=models.CASCADE)
     status = models.BooleanField(default = False)
 
 
@@ -133,6 +133,7 @@ class Posibility(models.Model):
     def __str__(self):
         return self.text
 
+
 class Answer(models.Model):
 
 
@@ -141,8 +142,8 @@ class Answer(models.Model):
     connected_run = models.ForeignKey(Run,to_field='id',blank=True,null=True,on_delete= models.SET_NULL)
     choice  = models.ForeignKey(Posibility,blank=True,null=True,on_delete= models.SET_NULL)
 
-    def __str__(self):
-        return self.choice
+    #def __str__(self):
+    #    return self.choice
 
 
     
