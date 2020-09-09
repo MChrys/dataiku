@@ -1,0 +1,5 @@
+{% extends 'django_formset_vuejs/home.html' %}
+
+{% for author in author_list %}
+{{ author.first_name }} - {{ author.last_name }}
+{% endfor %}

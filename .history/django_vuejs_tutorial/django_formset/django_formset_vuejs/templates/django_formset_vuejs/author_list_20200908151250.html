@@ -1,0 +1,11 @@
+{% extends 'django_formset_vuejs/home.html' %}
+{% block title %}
+    <h1> All Author list<h1>
+{% endblock title %}
+{% block content %}
+
+{% for author in author_list %}
+    
+    <a href="{{ url 'authr_detail' author.pk }}">{{ author.first_name }} - {{ author.last_name }}<br>
+{% endfor %}
+{% endblock content %}
