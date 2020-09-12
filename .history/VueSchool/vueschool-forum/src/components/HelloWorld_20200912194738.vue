@@ -47,10 +47,6 @@ import ThreadList from './ThreadList'
 console.log(sourceData)
 export default {
   name: 'HelloWorld',
-  components: {
-    ThreadList
-  },
-  
   data () {
     return {
       threads: sourceData.threads,

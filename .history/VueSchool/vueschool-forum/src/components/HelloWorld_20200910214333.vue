@@ -43,14 +43,9 @@
 </template>
 <script>
 import sourceData from '@/data'
-import ThreadList from './ThreadList'
 console.log(sourceData)
 export default {
   name: 'HelloWorld',
-  components: {
-    ThreadList
-  },
-  
   data () {
     return {
       threads: sourceData.threads,
@@ -61,3 +56,6 @@ export default {
 }
 </script>
 
+<style lang="stylus" scoped>
+@import "assets/css/style.css"; 
+</style>

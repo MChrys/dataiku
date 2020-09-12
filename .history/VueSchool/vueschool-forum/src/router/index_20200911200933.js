@@ -12,10 +12,9 @@ export default new Router({
       component: HelloWorld
     },
     {
-      path: '/thread/:id',
+      path: '/thread/id',
       name: 'ThreadShow',
-      component: ThreadShow,
-      props: true
+      component: ThreadShow
     }
   ],
   mode: 'history'

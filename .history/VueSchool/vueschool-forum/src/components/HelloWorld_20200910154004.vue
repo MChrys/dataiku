@@ -10,7 +10,7 @@
 
                 <div class="user-info">
                     <a href="#" class="user-name"> {{ users[posts[postId].userId].name }} </a>
-                    <!-- <p>{{ users[posts[postId].userId].avatar  }}</p>-->
+                    <p>{{ users[posts[postId].userId].avatar  }}</p>
                     <a href="#">
                         <img class="avatar-large" v-bind:src="users[posts[postId].userId].avatar" alt="">
                     </a>
@@ -43,14 +43,9 @@
 </template>
 <script>
 import sourceData from '@/data'
-import ThreadList from './ThreadList'
 console.log(sourceData)
 export default {
   name: 'HelloWorld',
-  components: {
-    ThreadList
-  },
-  
   data () {
     return {
       threads: sourceData.threads,
@@ -60,4 +55,3 @@ export default {
   }
 }
 </script>
-

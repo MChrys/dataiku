@@ -14,8 +14,7 @@ export default new Router({
     {
       path: '/thread/:id',
       name: 'ThreadShow',
-      component: ThreadShow,
-      props: true
+      component: ThreadShow
     }
   ],
   mode: 'history'

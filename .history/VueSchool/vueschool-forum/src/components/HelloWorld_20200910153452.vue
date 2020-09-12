@@ -10,9 +10,9 @@
 
                 <div class="user-info">
                     <a href="#" class="user-name"> {{ users[posts[postId].userId].name }} </a>
-                    <!-- <p>{{ users[posts[postId].userId].avatar  }}</p>-->
+                    <p>{{ getImgUrl(postId)  }}</p>
                     <a href="#">
-                        <img class="avatar-large" v-bind:src="users[posts[postId].userId].avatar" alt="">
+                        <img class="avatar-large" src="getImgUrl(postId)" alt="">
                     </a>
 
                     <p class="desktop-only text-small">107 posts</p>
@@ -43,21 +43,20 @@
 </template>
 <script>
 import sourceData from '@/data'
-import ThreadList from './ThreadList'
 console.log(sourceData)
 export default {
   name: 'HelloWorld',
-  components: {
-    ThreadList
-  },
-  
   data () {
     return {
       threads: sourceData.threads,
       posts: sourceData.posts,
       users: sourceData.users
     }
+  },
+  methods: {
+    getImgUrl (postid) {
+      return require.context(this.users[this.posts[postid].userId].avatar)
+    }
   }
 }
 </script>
-
